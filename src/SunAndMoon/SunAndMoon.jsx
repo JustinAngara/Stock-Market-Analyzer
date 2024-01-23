@@ -40,3 +40,4 @@ const SunAndMoonStyled = styled.div`
         background-color: #004949;
     }
 `;
+
