@@ -11,5 +11,4 @@ const InsetStyled = styled.div`
     margin: auto;
     padding: 0px 10px;
 
-
 `;

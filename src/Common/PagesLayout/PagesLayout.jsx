@@ -9,7 +9,9 @@ const PagesLayout = () => {
     return (
         <PagesLayoutStyled className='PagesLayout'>
             <Header />
-            <Outlet />
+            <main>
+                <Outlet />
+            </main>
             <Footer />
         </PagesLayoutStyled>
     );
