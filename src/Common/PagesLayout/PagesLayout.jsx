@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import { Outlet } from 'react-router-dom';
 
+// Medium Query
+import { useMediaQuery } from '@/Common/useMediaQuery';
+
 /* Components ---------------------------*/
-import Header from './Header.jsx';
+import Header from './Header/Header.jsx';
 import Footer from './Footer.jsx';
 
 const PagesLayout = () => {
