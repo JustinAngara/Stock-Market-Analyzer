@@ -36,6 +36,15 @@ const Essays = () => {
                 it was very tedius in terms of trying to reuse components, and react is a lot mroe efficient with handling components
             </p>
         </SingleEssay>
+
+        <SingleEssay question={`Q4: What is the difference between a Front-End and Back-End Developer?`}>
+            <p>
+                <b>Front-end</b> development is what you showcase to your user. The types of styles (css) done to tags, images, every bit of pieces that complete the 'look' of the website is the front-end
+            </p>
+            <p>
+                <b>Back-end</b> development is involved with databases (can be relational or non relational , such as sql vs nosql) where you store data of any type. It typically depends on what type of data you want to save.
+            </p>
+        </SingleEssay>
     </EssaysStyled>
     );
 }
