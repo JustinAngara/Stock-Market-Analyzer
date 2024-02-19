@@ -14,7 +14,7 @@ import {MediaQueryProvider} from "@/Common/useMediaQuery.jsx";
 
 //components
 import Home from "./Home"
-import Staff from "./Staff"
+import Staff from "./Staff/Staff.jsx"
 import Contact from "./Contact"
 
 // page componenents course work
