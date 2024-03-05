@@ -45,6 +45,13 @@ const Essays = () => {
                 <b>Back-end</b> development is involved with databases (can be relational or non relational , such as sql vs nosql) where you store data of any type. It typically depends on what type of data you want to save.
             </p>
         </SingleEssay>
+        <SingleEssay>
+            <p>
+                <b>Root Relative and Document Relative</b> are both methods of linking different files, such as jsx, pngs/imgs, etc.
+                <b>Document Relative</b> represents where the file is located, and relative to that location, you are able to transverse through the file location and select certain files
+                <b>Root Relative</b> is able to reference the source, or the node at the top of the flow chart where you're able to transverse from top bottom. You reference from the src to multiple sub folders to files.
+            </p>
+        </SingleEssay>
     </EssaysStyled>
     );
 }
