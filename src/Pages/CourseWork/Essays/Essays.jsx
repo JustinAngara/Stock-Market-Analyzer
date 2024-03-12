@@ -52,6 +52,28 @@ const Essays = () => {
                 <b>Root Relative</b> is able to reference the source, or the node at the top of the flow chart where you're able to transverse from top bottom. You reference from the src to multiple sub folders to files.
             </p>
         </SingleEssay>
+        <SingleEssay>
+            <p>
+                Image file types
+                <b>jpg</b> is a compressed image format, and commonly reliable way to compress detail into shareable file sizes, and ideal for blog content/social media
+                <b>gif</b> are a series of images that will continuously loop and is always text based. They have a semi-transparent feature. You may typically find the GIF format across social media.
+                <b>png</b> are used on websites to display high-quality images. They were created to exceed the performance and also has a broader color pallete; however, there are a few cons because their lossless compression typically causes a higher storage spacee
+            </p>
+        </SingleEssay>
+
+        <SingleEssay>
+            <p>
+                Define the following Agile roles: Product Manager, Product Owner, Business Analyst, Scrum Master, UX Designer, Developer/Engineer, QA/SDET, and DevOps
+                <b>Product Owner</b> is able to prioritize features and ensures that product will align with business goals
+                <b>Product Manager</b> watches over the product's lifecyle, and often times overlaps with the business owner's role
+                <b>Business Analyst</b> understands the business needs, and compresses the ideas into requirements
+                <b>Scrum Master's</b> ensures that the Agile process (think breaking the project into phases, cycles, etc) and removes possible roadblocks for the team
+                <b>UX Designer</b> is intended soley for the psychologyt of the user's experience on a website (mostly focusing on the UI)
+                <b>Developer/Engineer</b> are the people who write code
+                <b>QA/SDET</b> is a team that test and try to break the program to find bugs before the product gets released
+                <b>DevOps</b> ensures the smooth deployment and maintenance of a product
+            </p>
+        </SingleEssay>
     </EssaysStyled>
     );
 }
