@@ -1,21 +1,21 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const AccoladeItem = ({accolade}) => {
-    return <AccoladeItemStyled>
+const AccoladeItem = ({ accolade }) => {
+    return (
+        <AccoladeItemStyled>
             <ul>
                 <li>{accolade}</li>
             </ul>
-        </AccoladeItemStyled>;
-}
+        </AccoladeItemStyled>
+    );
+};
 
 export default AccoladeItem;
 
 // prop-types
 AccoladeItem.propTypes = {
-    prop: PropTypes.string.isRequired
+    accolade: PropTypes.string.isRequired,
 };
 
-const AccoladeItemStyled = styled.div`
-
-`;
+const AccoladeItemStyled = styled.div``;
