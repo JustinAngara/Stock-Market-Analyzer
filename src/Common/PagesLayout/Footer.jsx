@@ -12,8 +12,7 @@ const Footer = () => {
                     <SiteLogo />
                 </div>
                 <h2>
-                    CrossFit Decimate :: Peace, Love, Unity, Fitness, Chill, and Respect :: Colorado Springs, CO
-                </h2>
+                    StockPredicter :: Equity, Finance, and Investment :: San Diego, CA
                 <div className="copyright">
                     &copy; 2023. All rights reserved.
                 </div>
