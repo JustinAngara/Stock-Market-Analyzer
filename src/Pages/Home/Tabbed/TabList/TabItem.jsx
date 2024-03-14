@@ -19,8 +19,8 @@ TabItem.propTypes = {
 };
 
 const TabItemStyled = styled.div`
-    background-color: #014444;
-    color: #17b1b1;
+    background-color: #0f0f0f;
+    color: #8d918d;
     text-align: center;
     cursor: pointer;
     border-radius: 5px 5px 0px 0px;
@@ -31,7 +31,7 @@ const TabItemStyled = styled.div`
     width: clamp(75px, 20%, 150px);
 
     &.selected {
-        background: teal;
+        background-color: #808080;
         color: white;
     }
 `;

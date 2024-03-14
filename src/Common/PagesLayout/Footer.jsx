@@ -12,9 +12,11 @@ const Footer = () => {
                     <SiteLogo />
                 </div>
                 <h2>
-                    StockPredicter :: Equity, Finance, and Investment :: San Diego, CA
+                    Stockmarket :: Equity, Finance, and Investment :: San Diego, CA
+                </h2>
+
                 <div className="copyright">
-                    &copy; 2023. All rights reserved.
+                    &copy; 2024. All rights reserved.
                 </div>
             </Inset>
         </FooterStyled>
