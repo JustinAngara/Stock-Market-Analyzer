@@ -1,6 +1,6 @@
 import image1 from './img/Screenshot (5).png';
-import image2 from './img/Silvie-Esqueda.jpg';
-import image3 from './img/Kara-Smith.jpg';
+import image2 from './img/image2.png';
+import image3 from './img/Capture.png';
 import image4 from './img/Brook.jpg';
 import image5 from './img/Amber-Dyett.jpg';
 import image6 from './img/Dr-Skyler-Harms.jpg';
