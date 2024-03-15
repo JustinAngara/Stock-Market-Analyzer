@@ -25,7 +25,8 @@ StaffMember.propTypes = {
     member: PropTypes.object.isRequired
 };
 const StaffMemberStyled = styled.div`
-    background-color: #eeeeee;
+    border: 2px solid #FFFFFF;
+    background-color: #4d4d4d;
 
     img {
         width: 100%;
@@ -38,7 +39,7 @@ const StaffMemberStyled = styled.div`
 
     h3 {
         color: white;
-        background-color: #014444;
+        background-color: #44011d;
         padding: 5px 10px;
         margin: 0px;
     }
