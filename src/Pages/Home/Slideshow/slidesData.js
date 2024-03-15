@@ -1,33 +1,28 @@
-import slide1 from './img/Core-Strength.jpg';
-import slide2 from './img/Staff-In-Action.jpg';
-import slide3 from './img/Senior.jpg';
-import slide4 from './img/Group-Picture.jpg';
-import slide5 from './img/Aerial-Open-Gym.jpg';
+import slide1 from './img/slide1.jpg';
+import slide2 from './img/slide2.png';
+import slide3 from './img/slide3.jpg';
+
+import slide4 from './img/slide4.jpg';
 
 export const slidesData = [
     {
         id: 1,
         image: slide1,
-        title: 'Core Strength',
+        title: 'Stocks',
     },
     {
         id: 2,
         image: slide2,
-        title: 'Staff In Action',
+        title: 'Money',
     },
     {
         id: 3,
         image: slide3,
-        title: 'Senior',
+        title: 'Growth',
     },
     {
         id: 4,
         image: slide4,
-        title: 'Group Picture',
-    },
-    {
-        id: 5,
-        image: slide5,
-        title: 'Aerial Open Gym',
+        title: 'Goals',
     },
 ]

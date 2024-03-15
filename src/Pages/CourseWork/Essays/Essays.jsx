@@ -81,6 +81,6 @@ export default Essays;
 
 
 const EssaysStyled = styled.div`
-
+    color: whitesmoke
 `;
 

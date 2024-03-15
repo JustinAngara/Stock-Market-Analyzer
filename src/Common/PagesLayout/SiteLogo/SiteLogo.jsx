@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 /* Images ---------------------------*/
-import logoUrl from './crossfit-decimate-logo.png';
+import logoUrl from './SiteLogo1.png';
 
 const SiteLogo = () => {
     return (
