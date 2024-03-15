@@ -9,6 +9,7 @@ const CourseWorkLayout = () => {
             <Inset>
                 <h1>Course Work</h1>
                 <nav className="sublinks">
+                    <NavLink to="/course-work/graphs">Graphs</NavLink>
                     <NavLink to="/course-work">Essays</NavLink>
                     <NavLink to="/course-work/sun-and-moon">Sun And Moon</NavLink>
                     <NavLink to="/course-work/responsive">Responsive</NavLink>
