@@ -1,4 +1,4 @@
-import image1 from './img/Alex-Esqueda.jpg';
+import image1 from './img/Screenshot (5).png';
 import image2 from './img/Silvie-Esqueda.jpg';
 import image3 from './img/Kara-Smith.jpg';
 import image4 from './img/Brook.jpg';
