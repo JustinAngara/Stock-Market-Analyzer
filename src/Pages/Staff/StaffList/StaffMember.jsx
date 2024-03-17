@@ -30,6 +30,8 @@ const StaffMemberStyled = styled.div`
 
     img {
         width: 100%;
+        aspect-ratio: 1/1;
+
         display: block;
     }
 

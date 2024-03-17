@@ -18,6 +18,8 @@ import CourseWorkLayout from "./CourseWork/CourseWorkLayout.jsx";
 import SunAndMoon from "./CourseWork/SunAndMoon/SunAndMoon.jsx";
 import Essays from "./CourseWork/Essays/Essays.jsx";
 import ResponsiveDesign from "./CourseWork/ResponsiveDesign.jsx";
+import Graphs from "./CourseWork/Graphs/Graphs.jsx"
+
 const MyRoutes = () => {
     return (
         <HashRouter>
@@ -32,7 +34,9 @@ const MyRoutes = () => {
                             element={<CourseWorkLayout />}
                             path="course-work"
                         >
+
                             <Route element={<Essays />} path="" />
+                            <Route element={<Graphs />} path="graphs" />
                             <Route
                                 element={<SunAndMoon />}
                                 path="sun-and-moon"
