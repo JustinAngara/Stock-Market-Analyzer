@@ -13,7 +13,7 @@ export default AccoladeItem;
 
 // prop-types
 AccoladeItem.propTypes = {
-    prop: PropTypes.string.isRequired
+    accolade: PropTypes.string.isRequired
 };
 
 const AccoladeItemStyled = styled.div`
