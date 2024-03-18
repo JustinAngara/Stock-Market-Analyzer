@@ -2,6 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import React from "react";
 import ReactPlayer from "react-player";
+import Grid from "./Grid"
 
 const Graphs = () => {
     return (
@@ -13,7 +14,7 @@ const Graphs = () => {
 
             <h1>Ultimate Guide to Investing</h1>
             <ReactPlayer url="https://www.youtube.com/watch?v=_MeZt4LBnCE&ab_channel=JamesJani" />
-
+            <Grid />
         </GraphsStyled>
     );
 };
