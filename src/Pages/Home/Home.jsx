@@ -14,6 +14,7 @@ const Home = () => {
             <Slideshow />
             <Inset>
                 <ReactPlayer url="https://www.youtube.com/watch?v=A7fZp9dwELo&ab_channel=ConcerningReality" /><br></br>
+                <ReactPlayer url="https://www.youtube.com/watch?v=T37YvxMTofc&ab_channel=ThePaintExplainer" /><br></br>
                 <Tabbed />
             </Inset>
         </HomeStyled>
