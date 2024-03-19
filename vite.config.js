@@ -15,4 +15,5 @@ export default defineConfig({
         outDir: "./build",
     },
     base: "/uclax-web1-justin-angara/",
+    
 });
