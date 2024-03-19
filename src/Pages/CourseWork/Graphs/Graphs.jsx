@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import ReactPlayer from "react-player";
-
+import { getDataCall, testMethod } from "./GrabData";
 const Grid = () => {
     // currently test data
     const inventory = [
@@ -32,6 +32,15 @@ const Grid = () => {
                     <p>Insight: {item.insight}</p>
                 </GridItem>
             ))}
+            <button onClick={()=>{
+                console.log("clicked");
+
+                getDataCall();
+                testMethod();
+
+
+
+            }}>Test button</button>
         </GridStyled>
     );
 };
