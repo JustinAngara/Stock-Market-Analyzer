@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 import ReactPlayer from "react-player";
-import { getDataCall, testMethod } from "./GrabData";
+import {testMethod} from "./GrabData.js";
+
 const Grid = () => {
     // currently test data
     const inventory = [
@@ -14,7 +15,7 @@ const Grid = () => {
 
     return (
         <GridStyled>
-            <h1>Stock Market Explained</h1>
+            <h1>Stock Market</h1>
             <br></br>
             <ReactPlayer url="https://www.youtube.com/watch?v=ZCFkWDdmXG8" />
 
@@ -24,7 +25,7 @@ const Grid = () => {
             <ReactPlayer url="https://www.youtube.com/watch?v=_MeZt4LBnCE&ab_channel=JamesJani" />
             <br></br>
 
-            <div>Test Data, soon will add graphs based on data</div>
+            <div>Test Data {Math.random()}, soon will add graphs based on data</div>
             {inventory.map((item) => (
                 <GridItem key={item.title}>
                     <h3>{item.title}</h3>
@@ -32,10 +33,8 @@ const Grid = () => {
                     <p>Insight: {item.insight}</p>
                 </GridItem>
             ))}
-            <button onClick={()=>{
-                console.log("clicked");
 
-                getDataCall();
+            <button onClick={()=>{
                 testMethod();
 
 
