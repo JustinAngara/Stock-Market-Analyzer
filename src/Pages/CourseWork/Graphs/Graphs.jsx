@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import ReactPlayer from "react-player";
-import {testMethod} from "./GrabData.js";
+import GrabData from "./GrabData";
 
 const Grid = () => {
     // currently test data
@@ -34,12 +34,8 @@ const Grid = () => {
                 </GridItem>
             ))}
 
-            <button onClick={()=>{
-                testMethod();
-
-
-
-            }}>Test button</button>
+            <br></br>
+            <GrabData />
         </GridStyled>
     );
 };
