@@ -1,28 +1,23 @@
 import styled from "styled-components";
 
-let getData = () =>{
-    return fetch('https://jsonplaceholder.typicode.com/todos/1').then(res => res.json()).then(json => console.log(json))
-}
 
 const GrabData = () => {
 
     return (
         <GrabDataStyled>
-            {getData()}
-            test {Math.random()}
+            this is going to be test
         </GrabDataStyled>
     );
 };
 
+export default GrabData;
+
 const GrabDataStyled = styled.div`
     outline: solid 1px #999;
     padding: 10px;
+    color: white;
     margin: 10px 0px;
 `;
-
-
-export default GrabData;
-
 
 
 

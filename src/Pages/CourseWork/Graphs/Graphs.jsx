@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import ReactPlayer from "react-player";
-import GrabData from "./GrabData";
+
 
 const Grid = () => {
     // currently test data
@@ -35,7 +35,8 @@ const Grid = () => {
             ))}
 
             <br></br>
-            <GrabData />
+
+
         </GridStyled>
     );
 };
