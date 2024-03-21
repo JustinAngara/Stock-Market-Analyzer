@@ -1,23 +1,34 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 
-const GrabData = () => {
+const AKEY = `84LJOAJ15Y72QTB8`;
+const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=`;
+
+const Component = () => {
+    const [repos, setRepos] = useState([])
+
+    const fetchData = async ()=>{
+
+        let res = await fetch(URL + AKEY)
+        let data = await res.json()
+        setRepos(data)
+
+    }
+
+
+    useEffect(() => {
+        // fetch call used to be here
+        fetchData()
+    }, [])
+
 
     return (
-        <GrabDataStyled>
-            this is going to be test
-        </GrabDataStyled>
-    );
-};
+        <div>
+        {
+            repos.map(items => console.log(items))
+        }
+        </div>
+    )
+}
 
-export default GrabData;
-
-const GrabDataStyled = styled.div`
-    outline: solid 1px #999;
-    padding: 10px;
-    color: white;
-    margin: 10px 0px;
-`;
-
-
-
+export default Component;

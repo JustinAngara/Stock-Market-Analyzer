@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+
+import GrabData, {Component} from "./GrabData.jsx";
 
 
 const Grid = () => {
@@ -12,6 +14,7 @@ const Grid = () => {
         { title: "title 4", data: "data 4", insight: "insight 4" },
         { title: "title 5", data: "data 5", insight: "insight 5" },
     ];
+
 
     return (
         <GridStyled>
@@ -36,10 +39,12 @@ const Grid = () => {
 
             <br></br>
 
-
+            {Component()}
         </GridStyled>
     );
 };
+
+
 
 export default Grid;
 
