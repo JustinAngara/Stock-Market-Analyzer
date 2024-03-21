@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+import Component from "./GrabData.jsx";
 
-import GrabData, {Component} from "./GrabData.jsx";
+// import GrabData, {Component} from "./GrabData.jsx";
 
 
 const Grid = () => {
@@ -39,7 +40,7 @@ const Grid = () => {
 
             <br></br>
 
-            {Component()}
+            <Component/>
         </GridStyled>
     );
 };
