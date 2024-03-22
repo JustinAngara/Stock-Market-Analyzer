@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
-import Component from "./GrabData.jsx";
 
 // import GrabData, {Component} from "./GrabData.jsx";
 
+let symbol = `IBM`; // stock
 
+const AKEY = `84LJOAJ15Y72QTB8`;
+const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=`;
+
+let data;
 const Grid = () => {
     // currently test data
     const inventory = [
@@ -40,10 +44,40 @@ const Grid = () => {
 
             <br></br>
 
-            <Component/>
+            {component()}
         </GridStyled>
     );
 };
+
+let component = () =>{
+    return (
+        <div>this is the component func
+
+            <br></br>
+            <button onClick={()=>{
+                console.log("click me");
+                runApiCall();
+
+            }}>click me</button>
+
+        </div>
+    );
+}
+
+let runApiCall = async() =>{
+    console.log('returned api call');
+
+
+    let res = await fetch(URL + AKEY);
+    console.log(res);
+    data = await res.json();
+
+    console.log(data);
+
+
+
+
+}
 
 
 
