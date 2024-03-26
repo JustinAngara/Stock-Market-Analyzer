@@ -1,3 +1,5 @@
+import TimeSeriesObj from "./TimeSeriesObj"
+
 let symbol = `IBM`; // stock
 
 const AKEY = `84LJOAJ15Y72QTB8`;
@@ -719,8 +721,8 @@ let returnData = () => {
     };
 };
 
-export async function runApiCall() {
-    console.log("returned api call");
+export function runApiCall() {
+    // console.log("returned api call");
 
     // let res = await fetch(URL + AKEY);
     // console.log(res);
@@ -729,16 +731,14 @@ export async function runApiCall() {
     let data = returnData();
     let metaData = data["Meta Data"];
     let timeSeriesArr = data["Time Series (5min)"]; // obj
-    console.log(timeSeriesArr);
+    // console.log(timeSeriesArr);
 
     let timeSeriesArrKeys = Object.keys(timeSeriesArr);
     let timeSeriesArrValues = Object.values(timeSeriesArr);
-    for (let i = 0; i < timeSeriesArrKeys.length; i++) {
-        console.log(`iteration ${i}`);
-        console.log(timeSeriesArrKeys[i]);
-        console.log(timeSeriesArrValues[i]);
-        console.log("");
-    }
-    return <div></div>;
-};
 
+    console.log(timeSeriesArrKeys[0]+ ", " + timeSeriesArrValues[0]);
+
+    
+
+    return <div>changed stuf124f</div>;
+}

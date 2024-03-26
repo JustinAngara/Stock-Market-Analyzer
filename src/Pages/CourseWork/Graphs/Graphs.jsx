@@ -46,18 +46,19 @@ const Grid = () => {
 };
 
 let component = () => {
+
+    const [response, setResponse] = useState(0);
     return (
         <div>
             this is the component func
             <br></br>
             <button
                 onClick={() => {
-                    console.log("click me1");
-                    runApiCall();
-                }}
-            >
+                    setResponse(runApiCall());
+                }}>
                 click me
             </button>
+            {response}
         </div>
     );
 };
