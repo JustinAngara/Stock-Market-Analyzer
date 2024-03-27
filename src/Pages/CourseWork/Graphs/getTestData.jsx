@@ -1,11 +1,4 @@
-import TimeSeriesObj from "./TimeSeriesObj"
-
-let symbol = `IBM`; // stock
-
-const AKEY = `84LJOAJ15Y72QTB8`;
-const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=`;
-
-let returnData = () => {
+export default function returnData() {
     return {
         "Meta Data": {
             "1. Information":
@@ -719,26 +712,4 @@ let returnData = () => {
             },
         },
     };
-};
-
-export function runApiCall() {
-    // console.log("returned api call");
-
-    // let res = await fetch(URL + AKEY);
-    // console.log(res);
-    // data = await res.json();
-
-    let data = returnData();
-    let metaData = data["Meta Data"];
-    let timeSeriesArr = data["Time Series (5min)"]; // obj
-    // console.log(timeSeriesArr);
-
-    let timeSeriesArrKeys = Object.keys(timeSeriesArr);
-    let timeSeriesArrValues = Object.values(timeSeriesArr);
-
-    console.log(timeSeriesArrKeys[0]+ ", " + timeSeriesArrValues[0]);
-
-    
-
-    return <div>changed stuf124f</div>;
 }

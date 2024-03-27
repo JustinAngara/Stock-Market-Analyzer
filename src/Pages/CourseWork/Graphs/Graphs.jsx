@@ -1,9 +1,16 @@
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
-import { runApiCall } from "./getTestData";
-// import GrabData, {Component} from "./GrabData.jsx";
+import getTestData from "./getTestData";
+import TimeSeriesObj from "./TimeSeriesObj";
 
+let symbol = `IBM`; // stock
+
+// another api key 88Q5WZ47EI59BWS9 || 84LJOAJ15Y72QTB8
+const AKEY = `88Q5WZ47EI59BWS9`;
+const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${AKEY}`;
+
+// import GrabData, {Component} from "./GrabData.jsx";
 
 const Grid = () => {
     // currently test data
@@ -46,8 +53,16 @@ const Grid = () => {
 };
 
 let component = () => {
-
     const [response, setResponse] = useState(0);
+    useEffect(() => {
+        fetch("")
+            .then((results) => results.json())
+            .then((data) => {
+                let t = parseApi(data);
+                setResponse(t);
+            });
+    }, []);
+
     return (
         <div>
             this is the component func
@@ -55,7 +70,8 @@ let component = () => {
             <button
                 onClick={() => {
                     setResponse(runApiCall());
-                }}>
+                }}
+            >
                 click me
             </button>
             {response}
@@ -63,6 +79,22 @@ let component = () => {
     );
 };
 
+let parseApi = (data) => {
+    // console.log(data);
+    data = getTestData();
+    let metaData = data["Meta Data"];
+    let timeSeriesArr = data["Time Series (5min)"]; // obj
+    // console.log(timeSeriesArr);
+
+    let timeSeriesArrKeys = Object.keys(timeSeriesArr);
+    let timeSeriesArrValues = Object.values(timeSeriesArr);
+
+    return(
+        <div>
+            <TimeSeriesObj valuesArr={timeSeriesArrValues} />
+        </div>
+    );
+};
 export default Grid;
 
 const GridStyled = styled.div`
