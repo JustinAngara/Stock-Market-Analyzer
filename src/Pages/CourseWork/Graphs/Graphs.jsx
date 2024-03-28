@@ -69,7 +69,7 @@ let component = () => {
             <br></br>
             <button
                 onClick={() => {
-                    setResponse(runApiCall());
+                    setResponse(parseApi());
                 }}
             >
                 click me
