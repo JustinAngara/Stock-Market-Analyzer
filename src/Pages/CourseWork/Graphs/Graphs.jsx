@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import getTestData from "./getTestData";
 import TimeSeriesObj from "./TimeSeriesObj";
-
+import LineGraph from "./LineGraph";
 let symbol = `IBM`; // stock
 
 // another api key 88Q5WZ47EI59BWS9 || 84LJOAJ15Y72QTB8
@@ -82,15 +82,17 @@ let component = () => {
 let parseApi = (data) => {
     // console.log(data);
     data = getTestData();
+
     let metaData = data["Meta Data"];
     let timeSeriesArr = data["Time Series (5min)"]; // obj
-    // console.log(timeSeriesArr);
+
 
     let timeSeriesArrKeys = Object.keys(timeSeriesArr);
     let timeSeriesArrValues = Object.values(timeSeriesArr);
-
-    return(
+    console.log(timeSeriesArrKeys);
+    return (
         <div>
+            <LineGraph data = {timeSeriesArrValues} keys = {timeSeriesArrKeys} />
             <TimeSeriesObj valuesArr={timeSeriesArrValues} />
         </div>
     );

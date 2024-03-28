@@ -10,7 +10,7 @@
     "server": "json-server --watch ./src/api-server/emails-db.json --port 4059",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "git push origin main && gh-pages -d build",  
+    "deploy": "git push origin main && gh-pages -d build",
     "start:dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js"
   },
   "dependencies": {
@@ -18,11 +18,13 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.6.7",
+    "chart.js": "^4.4.2",
     "esm": "^3.2.25",
     "gh-pages": "^6.1.1",
     "json-server": "^1.0.0-alpha.23",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.15.1",
     "react-responsive-carousel": "^3.2.23",

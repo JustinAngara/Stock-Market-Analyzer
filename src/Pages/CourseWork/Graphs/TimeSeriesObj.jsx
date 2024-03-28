@@ -21,7 +21,7 @@ let writeTables = (e) => {
     let open = e["1. open"];
     let close = e["4. close"];
     let colorClass = "red";
-    if (open > close) {
+    if (open < close) {
         colorClass = "green";
         openCount++;
     } else{
