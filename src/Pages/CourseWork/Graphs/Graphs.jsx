@@ -26,27 +26,18 @@ const Grid = () => {
         <GridStyled>
             <h1>Stock Market</h1>
             <br></br>
-            <ReactPlayer url="https://www.youtube.com/watch?v=ZCFkWDdmXG8" />
-
-            <br></br>
-
-            <h1>Ultimate Guide to Investing</h1>
-            <ReactPlayer url="https://www.youtube.com/watch?v=_MeZt4LBnCE&ab_channel=JamesJani" />
-            <br></br>
-
             <div>
                 Test Data {Math.random()}, soon will add graphs based on data
             </div>
-            {inventory.map((item) => (
+            {/* {inventory.map((item) => (
                 <GridItem key={item.title}>
                     <h3>{item.title}</h3>
                     <p>Data: {item.data}</p>
                     <p>Insight: {item.insight}</p>
                 </GridItem>
-            ))}
+            ))} */}
 
             <br></br>
-
             {component()}
         </GridStyled>
     );
@@ -59,7 +50,7 @@ let component = () => {
             .then((results) => results.json())
             .then((data) => {
                 let t = parseApi(data);
-                setResponse(t);
+                setResponse(data);
             });
     }, []);
 
@@ -81,7 +72,9 @@ let component = () => {
 
 let parseApi = (data) => {
     // console.log(data);
-    data = getTestData();
+    if(data==null || data==undefined || data==""){
+        data = getTestData();
+    }
 
     let metaData = data["Meta Data"];
     let timeSeriesArr = data["Time Series (5min)"]; // obj

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
-
+import ReactPlayer from "react-player";
 const MainMenu = ({ onClick }) => {
     return (
         <MainMenuStyled onClick={onClick}>
@@ -11,6 +11,9 @@ const MainMenu = ({ onClick }) => {
             <NavLink to={"/course-work"}>Course</NavLink>
             <NavLink to={"/contact"}>Contact</NavLink>
             <NavLink to={"/staff"}>About me</NavLink>
+
+
+
         </MainMenuStyled>
     );
 };

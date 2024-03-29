@@ -13,8 +13,15 @@ const Home = () => {
 
             <Slideshow />
             <Inset>
+
+
+                
+                <h1>The Stock Market</h1>
+                <ReactPlayer url="https://www.youtube.com/watch?v=ZCFkWDdmXG8" />
+                <br></br>
                 <ReactPlayer url="https://www.youtube.com/watch?v=A7fZp9dwELo&ab_channel=ConcerningReality" /><br></br>
                 <ReactPlayer url="https://www.youtube.com/watch?v=T37YvxMTofc&ab_channel=ThePaintExplainer" /><br></br>
+
                 <Tabbed />
             </Inset>
         </HomeStyled>
