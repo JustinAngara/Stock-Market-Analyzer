@@ -50,6 +50,8 @@ let component = () => {
             .then((results) => results.json())
             .then((data) => {
                 let t = parseApi(data);
+                console.log(t[0])
+
                 setResponse(data);
             });
     }, []);
@@ -57,10 +59,12 @@ let component = () => {
     return (
         <div>
             this is the component func
+
             <br></br>
             <button
                 onClick={() => {
-                    setResponse(parseApi());
+                    let t = parseApi();
+                    setResponse(t);
                 }}
             >
                 click me
@@ -71,9 +75,13 @@ let component = () => {
 };
 
 let parseApi = (data) => {
+
+    let symb;
+    let gtd = getTestData();
     // console.log(data);
     if(data==null || data==undefined || data==""){
-        data = getTestData();
+        data = gtd[0];
+        symb = gtd[1];
     }
 
     let metaData = data["Meta Data"];
@@ -85,6 +93,8 @@ let parseApi = (data) => {
     console.log(timeSeriesArrKeys);
     return (
         <div>
+            <h1>{symb}</h1>
+
             <LineGraph data = {timeSeriesArrValues} keys = {timeSeriesArrKeys} />
             <TimeSeriesObj valuesArr={timeSeriesArrValues} />
         </div>
