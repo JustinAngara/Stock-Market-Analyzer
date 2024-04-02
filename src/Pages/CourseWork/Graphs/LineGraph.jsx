@@ -10,7 +10,9 @@ const LineGraph = ({ data, keys }) => {
 
     const open = data.map((e) => Number(e["1. open"]));
     const close = data.map((e) => Number(e["4. close"]));
-    console.log(open);
+
+
+
     return (
         <LineGraphStyled>
             <h2>Close-Open vs Time</h2>

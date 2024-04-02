@@ -78,13 +78,18 @@ let parseApi = (data) => {
 
     let metaData = data["Meta Data"];
     let timeSeriesArr = data["Time Series (5min)"]; // obj
-
+    let symb = metaData["2. Symbol"];
 
     let timeSeriesArrKeys = Object.keys(timeSeriesArr);
     let timeSeriesArrValues = Object.values(timeSeriesArr);
-    console.log(timeSeriesArrKeys);
+    // console.log(timeSeriesArrKeys);
+
+    console.log(`this is symb ${symb}`);
+
     return (
         <div>
+            <h2>Stock: {symb}</h2>
+
             <LineGraph data = {timeSeriesArrValues} keys = {timeSeriesArrKeys} />
             <TimeSeriesObj valuesArr={timeSeriesArrValues} />
         </div>
