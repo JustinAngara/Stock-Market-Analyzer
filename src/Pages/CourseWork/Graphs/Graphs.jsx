@@ -11,7 +11,7 @@ const AKEY = `88Q5WZ47EI59BWS9`;
 const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${AKEY}`;
 
 // import GrabData, {Component} from "./GrabData.jsx";
-
+let timeArr;
 const Grid = () => {
     // currently test data
     const inventory = [
@@ -73,11 +73,11 @@ let component = () => {
 let parseApi = (data) => {
     // console.log(data);
     if(data==null || data==undefined || data==""){
-        data = getTestData();
+        timeArr = getTestData();
     }
 
-    let metaData = data["Meta Data"];
-    let timeSeriesArr = data["Time Series (5min)"]; // obj
+    let metaData = timeArr["Meta Data"];
+    let timeSeriesArr = timeArr["Time Series (5min)"]; // obj
     let symb = metaData["2. Symbol"];
 
     let timeSeriesArrKeys = Object.keys(timeSeriesArr);
