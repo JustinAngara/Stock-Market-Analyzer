@@ -4,6 +4,8 @@ import ReactPlayer from "react-player";
 import getTestData from "./getTestData";
 import TimeSeriesObj from "./TimeSeriesObj";
 import LineGraph from "./LineGraph";
+import DataTables from "./DataTables";
+
 let symbol = `IBM`; // stock
 
 // another api key 88Q5WZ47EI59BWS9 || 84LJOAJ15Y72QTB8
@@ -85,6 +87,7 @@ let parseApi = (data) => {
     console.log(timeSeriesArrKeys);
     return (
         <div>
+            <DataTables />
             <h2>Symbol: {symb}</h2>
             <LineGraph data = {timeSeriesArrValues} keys = {timeSeriesArrKeys} />
             <TimeSeriesObj valuesArr={timeSeriesArrValues} />
