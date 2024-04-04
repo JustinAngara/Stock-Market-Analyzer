@@ -31,20 +31,12 @@ const Grid = () => {
             <div>
                 Test Data {Math.random()}, soon will add graphs based on data
             </div>
-            {/* {inventory.map((item) => (
-                <GridItem key={item.title}>
-                    <h3>{item.title}</h3>
-                    <p>Data: {item.data}</p>
-                    <p>Insight: {item.insight}</p>
-                </GridItem>
-            ))} */}
-
             <br></br>
             {component()}
         </GridStyled>
     );
 };
-
+// connects to api
 let component = () => {
     const [response, setResponse] = useState(0);
     useEffect(() => {
