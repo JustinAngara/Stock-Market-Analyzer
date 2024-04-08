@@ -68,8 +68,6 @@ let component = () => {
 let parseApi = (data) => {
     // console.log(data);
 
-    const [selectedItem, setSelectedItem] = useState(1);
-
     if (data == null || data == undefined || data == "") {
         timeArr = getTestData();
     }
@@ -81,33 +79,30 @@ let parseApi = (data) => {
     let timeSeriesArrKeys = Object.keys(timeSeriesArr);
     let timeSeriesArrValues = Object.values(timeSeriesArr);
     console.log(timeSeriesArrKeys);
+
+    const onSelect = (eventKey, event) => {
+        event.preventDefault();
+        event.persist();
+        event.stopPropagation();
+        console.log(eventKey); // selected event will trigger
+    };
+
     return (
         <div>
             {/* will display drop down from here */}
 
-            <Dropdown>
+            <Dropdown onSelect={onSelect}>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Select Stock
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                    <Dropdown.Item
-                        onClick={(e) => {
-                            if (e.target.id === "dropdown-basic") {
-                                //do something
-                                setSelectedItem("set");
-                                console.log("now in bootstrap");
-                            }
-                        }}
-                    >
-                        Action
-                    </Dropdown.Item>
-                    <Dropdown.Item>Another action</Dropdown.Item>
-                    <Dropdown.Item>Something else</Dropdown.Item>
+                    <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+                    <Dropdown.Item eventKey="3">Something else</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <DataTables />
-            {selectedItem}
             {/* end of drop down */}
 
             <h2>Symbol: {symb}</h2>
