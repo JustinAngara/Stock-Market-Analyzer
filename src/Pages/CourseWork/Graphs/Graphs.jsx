@@ -5,6 +5,7 @@ import getTestData from "./getTestData";
 import TimeSeriesObj from "./TimeSeriesObj";
 import LineGraph from "./LineGraph";
 import DataTables from "./DataTables";
+import Dropdown from "react-bootstrap/Dropdown";
 
 let symbol = `IBM`; // stock
 
@@ -28,9 +29,9 @@ const Grid = () => {
         <GridStyled>
             <h1>Stock Market</h1>
             <br></br>
-            <div>
+            {/* <div>
                 Test Data {Math.random()}, soon will add graphs based on data
-            </div>
+            </div> */}
             <br></br>
             {component()}
         </GridStyled>
@@ -39,6 +40,7 @@ const Grid = () => {
 // connects to api
 let component = () => {
     const [response, setResponse] = useState(0);
+    const [selectedItem, setSelectedItem] = useState(1);
     useEffect(() => {
         fetch("")
             .then((results) => results.json())
@@ -50,7 +52,20 @@ let component = () => {
 
     return (
         <div>
-            this is the component func
+            <div>
+                <h3>Select Stock</h3>
+                <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Dropdown Button
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item>Action</Dropdown.Item>
+                        <Dropdown.Item>Another action</Dropdown.Item>
+                        <Dropdown.Item>Something else</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
             <br></br>
             <button
                 onClick={() => {
@@ -66,7 +81,7 @@ let component = () => {
 
 let parseApi = (data) => {
     // console.log(data);
-    if(data==null || data==undefined || data==""){
+    if (data == null || data == undefined || data == "") {
         timeArr = getTestData();
     }
 
@@ -81,7 +96,7 @@ let parseApi = (data) => {
         <div>
             <DataTables />
             <h2>Symbol: {symb}</h2>
-            <LineGraph data = {timeSeriesArrValues} keys = {timeSeriesArrKeys} />
+            <LineGraph data={timeSeriesArrValues} keys={timeSeriesArrKeys} />
             <TimeSeriesObj valuesArr={timeSeriesArrValues} />
         </div>
     );
