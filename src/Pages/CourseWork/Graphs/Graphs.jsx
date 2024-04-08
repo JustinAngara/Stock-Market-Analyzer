@@ -6,7 +6,7 @@ import TimeSeriesObj from "./TimeSeriesObj";
 import LineGraph from "./LineGraph";
 import DataTables from "./DataTables";
 import Dropdown from "react-bootstrap/Dropdown";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 let symbol = `IBM`; // stock
 
 // another api key 88Q5WZ47EI59BWS9 || 84LJOAJ15Y72QTB8
@@ -40,7 +40,6 @@ const Grid = () => {
 // connects to api
 let component = () => {
     const [response, setResponse] = useState(0);
-    const [selectedItem, setSelectedItem] = useState(1);
     useEffect(() => {
         fetch("")
             .then((results) => results.json())
@@ -52,20 +51,7 @@ let component = () => {
 
     return (
         <div>
-            <div>
-                <h3>Select Stock</h3>
-                <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Dropdown Button
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                        <Dropdown.Item>Action</Dropdown.Item>
-                        <Dropdown.Item>Another action</Dropdown.Item>
-                        <Dropdown.Item>Something else</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </div>
+            <div></div>
             <br></br>
             <button
                 onClick={() => {
@@ -81,6 +67,9 @@ let component = () => {
 
 let parseApi = (data) => {
     // console.log(data);
+
+    const [selectedItem, setSelectedItem] = useState(1);
+
     if (data == null || data == undefined || data == "") {
         timeArr = getTestData();
     }
@@ -94,7 +83,33 @@ let parseApi = (data) => {
     console.log(timeSeriesArrKeys);
     return (
         <div>
+            {/* will display drop down from here */}
+
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    Select Stock
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item
+                        onClick={(e) => {
+                            if (e.target.id === "dropdown-basic") {
+                                //do something
+                                setSelectedItem("set");
+                                console.log("now in bootstrap");
+                            }
+                        }}
+                    >
+                        Action
+                    </Dropdown.Item>
+                    <Dropdown.Item>Another action</Dropdown.Item>
+                    <Dropdown.Item>Something else</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
             <DataTables />
+            {selectedItem}
+            {/* end of drop down */}
+
             <h2>Symbol: {symb}</h2>
             <LineGraph data={timeSeriesArrValues} keys={timeSeriesArrKeys} />
             <TimeSeriesObj valuesArr={timeSeriesArrValues} />
