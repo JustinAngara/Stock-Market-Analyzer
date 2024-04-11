@@ -102,7 +102,8 @@ let parseApi = (data) => {
                     <Dropdown.Item eventKey="3">Something else</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            <DataTables />
+
+            <DataTables data= {metaData}/>
             {/* end of drop down */}
 
             <h2>Symbol: {symb}</h2>
