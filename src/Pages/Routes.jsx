@@ -31,16 +31,16 @@ const MyRoutes = () => {
                         <Route element={<Contact />} path="contact" />
 
                         <Route
-                            element={<CourseWorkLayout />}
+                            element={<Graphs />}
                             path="course-work"
                         >
 
                             <Route element={<Essays />} path="" />
                             <Route element={<Graphs />} path="graphs" />
-                            <Route
+                            {/* <Route
                                 element={<SunAndMoon />}
                                 path="sun-and-moon"
-                            />
+                            /> */}
                             <Route
                                 element={<ResponsiveDesign />}
                                 path="responsive"
