@@ -4,8 +4,7 @@ import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the 
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 
 let DataTables = ({data}) => {
-    console.log("data tables data");
-    console.log(data);
+
     return <div>
         	<table>
                 <thead>
@@ -19,11 +18,11 @@ let DataTables = ({data}) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>test1</td>
-                        <td>test2</td>
-                        <td>test3</td>
-                        <td>test4</td>
-                        <td>test5</td>
+                        <td>{getMeanPrice(data)}</td>
+                        <td>{getStandardDeviation(data)}</td>
+                        <td>{getMeanOpen(data)}</td>
+                        <td>getMeanClose(data)</td>
+                        <td>{getIQR(data)}</td>
 
                     </tr>
 
@@ -45,6 +44,15 @@ let getMeanClose = (d) =>{
 
 }
 let getIQR = (d) =>{
+    let q3 = d[Math.floor(d.length*.75)]["4. close"];
+    let q1 = d[Math.floor(d.length*.25)]["1. open"];
+    let iqr = q3-q1;
+    console.log('inside q3, ')
+    console.log(q3);
+    console.log('inside q1,');
+    console.log(q1);
+    // returns outliers
+    return [q3 + (1.5*iqr), q1 - (1.5*iqr)];
 
 }
 

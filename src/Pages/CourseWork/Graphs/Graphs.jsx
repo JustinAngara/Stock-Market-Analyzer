@@ -103,7 +103,7 @@ let parseApi = (data) => {
                 </Dropdown.Menu>
             </Dropdown>
 
-            <DataTables data= {metaData}/>
+            <DataTables data= {timeSeriesArrValues}/>
             {/* end of drop down */}
 
             <h2>Symbol: {symb}</h2>
