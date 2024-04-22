@@ -11,28 +11,10 @@ const LineGraph = ({ data, keys }) => {
     const open = data.map((e) => Number(e["1. open"]));
     const close = data.map((e) => Number(e["4. close"]));
     console.log(open);
+    let outlier = getIQR(data);
     return (
         <LineGraphStyled>
-            <h2>Close-Open vs Time</h2>
-            <Bar
-                datasetIdKey="id"
-                data={{
-                    labels: keys,
-                    datasets: [
-                        {
-                            id: 1,
-                            label: `Open`,
-                            data: getDifference(close, open)[0],
-                        },
-                        {
-                            id: 2,
-                            label: `close`,
-                            data: getDifference(close, open)[1],
-                        },
-                    ],
-                }}
-            />
-            <h2>Open&Close vs Time</h2>
+            <h2>Open&Close vs Time</h2> {/**line graph */}
             <Line
                 datasetIdKey="id"
                 data={{
@@ -53,9 +35,39 @@ const LineGraph = ({ data, keys }) => {
                             label: "mean",
                             data: getMean(open),
                         },
+                        {
+                            id: 4,
+                            label: "lower",
+                            data: outlier[0]
+                        },
+                        {
+                            id: 5,
+                            label: "upper",
+                            data: outlier[1]
+                        },
                     ],
                 }}
             />
+            <br></br><h2>Close-Open vs Time</h2>
+            <Bar
+                datasetIdKey="id"
+                data={{
+                    labels: keys,
+                    datasets: [
+                        {
+                            id: 1,
+                            label: `Open`,
+                            data: getDifference(close, open)[0],
+                        },
+                        {
+                            id: 2,
+                            label: `close`,
+                            data: getDifference(close, open)[1],
+                        },
+                    ],
+                }}
+            />
+
         </LineGraphStyled>
     );
 };
@@ -104,14 +116,35 @@ let getMean = (array) => {
     return t;
 };
 
-let getDerivative = (a) => {
-    let t = [];
-    for (let i = 0; i < a.length - 1; i++) {
-        t.push(a[i] + (a[i + 1] - a[i]) / 2);
+let getIQR = (d) =>{
+    console.log('inside line graph iqr method');
+    console.log(d);
+    let q3 = parseInt(d[Math.floor(d.length*.75)]["4. close"]);
+    let q1 = parseInt(d[Math.floor(d.length*.25)]["1. open"]);
+    let iqr = parseInt(q3-q1);
+    console.log('inside q3, ')
+    console.log(q3);
+    console.log('inside q1,');
+    console.log(q1);
+    // returns outliers
+    //q3 + (1.5*iqr)
+    //q1 - (1.5*iqr)
+    let upper
+    let lower;
+    lower = q1 - (1.5*iqr)
+    upper = q3 + (1.5*iqr)
+    return populateArr(lower,upper); // array, n=2;
+}
+let populateArr = (l,u) =>{
+    let a = [];
+    let b =  [];
+    for(let i = 0; i<100; i++){
+        a.push(l);
+        b.push(u)
     }
-    return t;
-};
-
+    console.log(`this is a: ${a}, this is b: ${b}`);
+    return [a,b]
+}
 export default LineGraph;
 
 // prop-types
