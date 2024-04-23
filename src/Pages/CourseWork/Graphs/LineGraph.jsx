@@ -121,7 +121,8 @@ let getIQR = (d) =>{
     console.log(d);
     let q3 = parseInt(d[Math.floor(d.length*.75)]["4. close"]);
     let q1 = parseInt(d[Math.floor(d.length*.25)]["1. open"]);
-    let iqr = parseInt(q3-q1);
+    let iqr = Math.abs(parseInt(q3-q1));
+
     console.log('inside q3, ')
     console.log(q3);
     console.log('inside q1,');

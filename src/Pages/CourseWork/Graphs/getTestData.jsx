@@ -1,4 +1,7 @@
-export default function returnData() {
+export default function returnData(wantsAllData) {
+    if(wantsAllData){
+        return arr;
+    }
     return arr[Math.floor(Math.random() * arr.length)];
 }
 let arr = [
