@@ -3,10 +3,11 @@ import getTestData from './getTestData';
 const PredictionAlgorithm = () => {
     let data = getTestData(true);
 
+
     return <PredictionAlgorithmStyled>
         <h1>Predicted Best Algorithm Stock</h1>
         <div>
-            {/* [{grabStocks(data)}] */}
+            [{grabStocks(data, 0).toString()}]
             n-stocks: {data.length} <br></br>
             Most riskiest (outliers)  <br></br>
             Most Stable (low SD): {lowestVar(data)}<br></br>
@@ -54,7 +55,19 @@ let lowestVar = (d) =>{
     return `in lowest var func`
 }
 let returnVariance = (d) =>{
+    let minVar = 99999;
+    let tinkerMin = "";
+    let temp;
+    for(let i = 0; i<d.length; i++){
+        temp = getSD(d[i])
+        if(getSD(d[i]) < minVar){
 
+        }
+    }
+    return `Tinker: ${tinkerMin}, SD: (${minVar})`
+
+}
+let getSD =  (i) =>{
 
 }
 const PredictionAlgorithmStyled = styled.div`
