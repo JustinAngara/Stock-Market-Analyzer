@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 import getTestData from './getTestData';
+let data = getTestData(true);
 const PredictionAlgorithm = () => {
-    let data = getTestData(true);
+
 
 
     return <PredictionAlgorithmStyled>
         <h1>Predicted Best Algorithm Stock</h1>
         <div>
-            [{grabStocks(data, 0).toString()}]
+            [{grabStocks(data, 0).toString()}]<br></br>
+
             n-stocks: {data.length} <br></br>
             Most riskiest (outliers)  <br></br>
             Most Stable (low SD): {lowestVar(data)}<br></br>
@@ -38,38 +40,41 @@ let grabStocks = (d, z) =>{
 
 }
 let lowestVar = (d) =>{
-    // d is an array filled wth time objects
-    // low variablity is defined by min SD
-    let stockName = "";
-    let lowestSD = 9999;
-
-    let temp;
-    for(let i = 0; i < d.length; i++){
-        // temp = returnVariance(d[i]);
-        if(temp < lowestSD){
-            // lowestSD = temp;
-            // stockName = grabStocks(d,1);
-        }
-    }
-
-    return `in lowest var func`
-}
-let returnVariance = (d) =>{
     let minVar = 99999;
     let tinkerMin = "";
     let temp;
     for(let i = 0; i<d.length; i++){
         temp = getSD(d[i])
-        if(getSD(d[i]) < minVar){
-
+        if(temp < minVar){
+            console.log(`this is temp: ${temp}`);
+            minVar = temp;
+            tinkerMin = grabStocks(data,i)
         }
     }
     return `Tinker: ${tinkerMin}, SD: (${minVar})`
-
 }
-let getSD =  (i) =>{
 
+let getSD = (d) => {
+    console.log('getSD method');
+
+    d = d["Time Series (5min)"];
+    d = Object.values(d);
+
+
+    let  open = d.map((e) => Number(e["1. open"]));
+
+    console.log('in d');
+    console.log(open);
+    // console.log(open);
+
+    const n = open.length;
+    const mean = open.reduce((a, b) => a + b) / n;
+    return Math.sqrt(
+        open.map((x) => Math.pow(x - mean, 2)).reduce((a, b) => a + b) / n
+
+    );
 }
+
 const PredictionAlgorithmStyled = styled.div`
     .displayStocks{
         border: 1px;
