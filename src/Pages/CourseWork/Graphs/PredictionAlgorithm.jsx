@@ -22,6 +22,10 @@ const PredictionAlgorithm = () => {
 
 export default PredictionAlgorithm;
 
+let getOutliers = () => {
+
+}
+
 
 let grabStocks = (d, z) =>{
     if(z!==0){
