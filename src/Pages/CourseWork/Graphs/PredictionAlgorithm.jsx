@@ -37,11 +37,12 @@ let getRecStock = (d) =>{
 }
 let calculateStockValue = (z) =>{
     // this is an array of each object that shows open, close, volume, etc
-    let timeSeriesArrValues = Object.values(z["Time Series (5min)"]);
-    console.log(timeSeriesArrValues);
+    let tsv = Object.values(z["Time Series (5min)"]);
+    console.log(tsv);
 
-    for(let i =0 ; i < 10; i++){
-        console.log('inside calc stock value');
+    for(let i =0 ; i < tsv.length; i++){
+        console.log(tsv[i]);
+
 
     }
 }
