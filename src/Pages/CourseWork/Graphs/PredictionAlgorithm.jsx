@@ -11,7 +11,7 @@ const PredictionAlgorithm = () => {
             [{grabStocks(data, 0).toString()}]<br></br>
 
             n-stocks: {data.length} <br></br>
-            Most riskiest (outliers)  <br></br>
+            Recommended: {getRecStock(data)}  <br></br>
             Most Stable (low SD): {lowestVar(data)}<br></br>
             <div className = "displayStocks">
                 now in display stocks
@@ -22,10 +22,29 @@ const PredictionAlgorithm = () => {
 
 export default PredictionAlgorithm;
 
-let getOutliers = () => {
-
+let getRecStock = (d) =>{
+    /**
+     * high volume .8
+     * high amounts of sd but not too much
+     * grab news outlet on positive or negative aspects from api
+     */
+    // grab the sd
+    let t = [];
+    for(let i =0; i<d.length;i++){
+        console.log('now in getRecStock');
+        t.push(calculateStockValue(d[i]))
+    }
 }
+let calculateStockValue = (z) =>{
+    // this is an array of each object that shows open, close, volume, etc
+    let timeSeriesArrValues = Object.values(z["Time Series (5min)"]);
+    console.log(timeSeriesArrValues);
 
+    for(let i =0 ; i < 10; i++){
+        console.log('inside calc stock value');
+
+    }
+}
 
 let grabStocks = (d, z) =>{
     if(z!==0){
@@ -56,6 +75,10 @@ let lowestVar = (d) =>{
         }
     }
     return `Tinker: ${tinkerMin}, SD: (${minVar})`
+}
+
+let invNorm = (x) =>{
+
 }
 
 let getSD = (d) => {
