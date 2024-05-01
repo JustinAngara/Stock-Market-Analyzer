@@ -2,15 +2,17 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Line, Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto";
+
+
 const LineGraph = ({ data, keys }) => {
     // console.log(data);
     let openArr = data["1. open"];
     let closeArr = [];
     console.log(keys);
 
-    const open = data.map((e) => Number(e["1. open"]));
-    const close = data.map((e) => Number(e["4. close"]));
-    console.log(open);
+    openArr = data.map((e) => Number(e["1. open"]));
+    closeArr = data.map((e) => Number(e["4. close"]));
+    console.log();
     let outlier = getIQR(data);
     return (
         <LineGraphStyled>
@@ -23,17 +25,17 @@ const LineGraph = ({ data, keys }) => {
                         {
                             id: 1,
                             label: `open`,
-                            data: open,
+                            data: openArr,
                         },
                         {
                             id: 2,
                             label: "close",
-                            data: close,
+                            data: closeArr,
                         },
                         {
                             id: 3,
                             label: "mean",
-                            data: getMean(open),
+                            data: getMean(openArr),
                         },
                         {
                             id: 4,
@@ -57,12 +59,12 @@ const LineGraph = ({ data, keys }) => {
                         {
                             id: 1,
                             label: `Open`,
-                            data: getDifference(close, open)[0],
+                            data: getDifference(closeArr, openArr)[0],
                         },
                         {
                             id: 2,
                             label: `close`,
-                            data: getDifference(close, open)[1],
+                            data: getDifference(closeArr, openArr)[1],
                         },
                     ],
                 }}
@@ -117,10 +119,9 @@ let getMean = (array) => {
 };
 
 let getIQR = (d) =>{
-    console.log('inside line graph iqr method');
-    console.log(d);
-    let q3 = parseInt(d[Math.floor(d.length*.75)]["4. close"]);
-    let q1 = parseInt(d[Math.floor(d.length*.25)]["1. open"]);
+    let temp = d.map((e) => Number(e["1. open"])).sort();
+    let q3 = parseInt(temp[Math.floor(d.length*.75)]);
+    let q1 = parseInt(temp[Math.floor(d.length*.25)]);
     let iqr = Math.abs(parseInt(q3-q1));
 
     console.log('inside q3, ')
