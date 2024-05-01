@@ -1,6 +1,6 @@
-# UCLAX Web 1 Project
+# Stock Market Analyzer
 
-test
+Given a set amount of stocks, what is the best stock to invest?
 
 This resource is a starter project for students in the UCLAX Web 1 course.
 
