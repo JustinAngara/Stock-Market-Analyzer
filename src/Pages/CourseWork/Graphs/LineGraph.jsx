@@ -120,9 +120,12 @@ let getMean = (array) => {
 
 let getIQR = (d) =>{
     let temp = d.map((e) => Number(e["1. open"])).sort();
-    let q3 = parseInt(temp[Math.floor(d.length*.75)]);
-    let q1 = parseInt(temp[Math.floor(d.length*.25)]);
-    let iqr = Math.abs(parseInt(q3-q1));
+    console.log('this is temp');
+    console.log(temp);
+    // index - 1
+    let q3 = parseInt(temp[74]);
+    let q1 = parseInt(temp[24]);
+    let iqr = Math.abs(q3-q1);
 
     console.log('inside q3, ')
     console.log(q3);
