@@ -3,6 +3,7 @@ import getTestData from './getTestData';
 import GrabNews from "./GrabNews"
 
 let data = getTestData(true);
+let globalSDArr; // global sd array
 const PredictionAlgorithm = () => {
 
 
@@ -39,21 +40,31 @@ let getRecStock = (d) =>{
 /**
  * # of lower bound outliers, val: .4
  * if the standard deviation is within the .25 - .75 of listed stocks, val: .2
- * most data points are clustered under the mean: .1
+ * pearson skewness gets exponentially greater: .1
  * news article parser to determine positive or negative based on eVal, val: .3
  * */
+
 
 let calculateStockValue = (z) =>{
     // this is an array of each object that shows open, close, volume, etc
     let tsv = Object.values(z["Time Series (5min)"]);
     console.log(tsv);
     // console.log(`now in get rec stock ${GrabNews()}`);
+    let sd;
+    // if sd < sd[sd.length*.75] && sd > sd[sd.length*.25]
     for(let i =0 ; i < tsv.length; i++){
+        // tsv[i] is the individual 5 minute intervals at index i
+
         console.log('calculatestockvaluemethod ');
         console.log(tsv[i]);
 
 
+
     }
+}
+
+let grabPearsonsCoefficient = (stock) =>{
+
 }
 
 let grabStocks = (d, z) =>{
