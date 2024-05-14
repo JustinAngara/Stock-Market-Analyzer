@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import getTestData from './getTestData';
+import GrabNews from "./GrabNews"
+
 let data = getTestData(true);
 const PredictionAlgorithm = () => {
 
@@ -23,24 +25,31 @@ const PredictionAlgorithm = () => {
 export default PredictionAlgorithm;
 
 let getRecStock = (d) =>{
-    /**
-     * high volume .8
-     * high amounts of sd but not too much
-     * grab news outlet on positive or negative aspects from api
-     */
-    // grab the sd
+
     let t = [];
     for(let i =0; i<d.length;i++){
         console.log('now in getRecStock');
         t.push(calculateStockValue(d[i]))
     }
 }
+
+
+// imposed Algorithm
+
+/**
+ * # of lower bound outliers, val: .4
+ * if the standard deviation is within the .25 - .75 of listed stocks, val: .2
+ * most data points are clustered under the mean: .1
+ * news article parser to determine positive or negative based on eVal, val: .3
+ * */
+
 let calculateStockValue = (z) =>{
     // this is an array of each object that shows open, close, volume, etc
     let tsv = Object.values(z["Time Series (5min)"]);
     console.log(tsv);
-
+    // console.log(`now in get rec stock ${GrabNews()}`);
     for(let i =0 ; i < tsv.length; i++){
+        console.log('calculatestockvaluemethod ');
         console.log(tsv[i]);
 
 
@@ -81,6 +90,8 @@ let lowestVar = (d) =>{
 let invNorm = (x) =>{
 
 }
+
+
 
 let getSD = (d) => {
     console.log('getSD method');
