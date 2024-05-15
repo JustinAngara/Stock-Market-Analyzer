@@ -5,7 +5,7 @@ import GrabNews from "./GrabNews"
 let data = getTestData(true);
 let globalSDArr; // global sd array
 const PredictionAlgorithm = () => {
-
+    globalSDArr = populateSDArray(data)
 
 
     return <PredictionAlgorithmStyled>
@@ -30,7 +30,7 @@ let getRecStock = (d) =>{
     let t = [];
     for(let i =0; i<d.length;i++){
         console.log('now in getRecStock');
-        t.push(calculateStockValue(d[i]))
+        t.push(calculateStockValue(d[i], i))
     }
 }
 
@@ -44,17 +44,30 @@ let getRecStock = (d) =>{
  * news article parser to determine positive or negative based on eVal, val: .3
  * */
 
+let populateSDArray = (d) =>{
+    console.log('in populate sd arrayy');
+    console.log(d);
+    let t = [];
 
-let calculateStockValue = (z) =>{
+    for(let i = 0; i < d.length; i++){
+        t.push(getSD(d[i]));
+    }
+    t = t.sort();
+    console.log('this is t');
+    console.log(t);
+    return t;
+}
+let calculateStockValue = (z, i) =>{
     // this is an array of each object that shows open, close, volume, etc
     let tsv = Object.values(z["Time Series (5min)"]);
     console.log(tsv);
     // console.log(`now in get rec stock ${GrabNews()}`);
-    let sd;
+    let sd = getSD(z);
+    console.log('calculate stock value method');
+    console.log(sd);
     // if sd < sd[sd.length*.75] && sd > sd[sd.length*.25]
     for(let i =0 ; i < tsv.length; i++){
         // tsv[i] is the individual 5 minute intervals at index i
-
         console.log('calculatestockvaluemethod ');
         console.log(tsv[i]);
 
