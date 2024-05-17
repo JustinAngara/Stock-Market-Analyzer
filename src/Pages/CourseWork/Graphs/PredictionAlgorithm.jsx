@@ -11,11 +11,15 @@ const PredictionAlgorithm = () => {
     return <PredictionAlgorithmStyled>
         <h1>Predicted Best Algorithm Stock</h1>
         <div>
+            <div className="bold">
+                Recommended Stock: {getRecStock(data)}  <br></br>
+            </div>
+
+            Most Stable (low SD): {lowestVar(data)}<br></br>
             [{grabStocks(data, 0).toString()}]<br></br>
 
             n-stocks: {data.length} <br></br>
-            Recommended: {getRecStock(data)}  <br></br>
-            Most Stable (low SD): {lowestVar(data)}<br></br>
+
             <div className = "displayStocks">
                 now in display stocks
             </div>
@@ -141,5 +145,9 @@ let getSD = (d) => {
 const PredictionAlgorithmStyled = styled.div`
     .displayStocks{
         border: 1px;
+    }
+    .bold{
+        font-size: 20px;
+        font-weight: bold;
     }
 `;
