@@ -81,7 +81,7 @@ let getIntegralApprox = (d) =>{
 
     let mu = getMean(gData,false);// gets closed time interval
     for(let i = 0; i<50-1;i++){
-        z += (Number(d[i]["4. close"]) + Number(d[i+1]["4. close"]) - mu) * (.5*5);
+        z += ((Number(d[i]["4. close"])-mu) + (Number(d[i+1]["4. close"]))-mu) * (.5*5);
     }
     return z;
 }
