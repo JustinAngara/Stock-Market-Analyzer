@@ -15,7 +15,7 @@ let DataTables = ({data}) => {
                         <th>Mean Open</th>
                         <th>Mean Close</th>
                         <th>1.5 IQR</th>
-                        <th>Integral Approx.</th>
+                        <th>Integral Accum.</th>
                     </tr>
                 </thead>
                 <tbody>
