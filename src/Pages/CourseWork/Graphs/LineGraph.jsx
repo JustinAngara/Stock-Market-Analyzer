@@ -15,62 +15,67 @@ const LineGraph = ({ data, keys }) => {
     console.log();
     let outlier = getIQR(data);
     return (
-        <LineGraphStyled>
-            <h2>Open&Close vs Time</h2> {/**line graph */}
-            <Line
-                datasetIdKey="id"
-                data={{
-                    labels: keys,
-                    datasets: [
-                        {
-                            id: 1,
-                            label: `open`,
-                            data: openArr,
-                        },
-                        {
-                            id: 2,
-                            label: "close",
-                            data: closeArr,
-                        },
-                        {
-                            id: 3,
-                            label: "mean",
-                            data: getMean(openArr),
-                        },
-                        {
-                            id: 4,
-                            label: "lower",
-                            data: outlier[0]
-                        },
-                        {
-                            id: 5,
-                            label: "upper",
-                            data: outlier[1]
-                        },
-                    ],
-                }}
-            />
-            <br></br><h2>Close-Open vs Time</h2>
-            <Bar
-                datasetIdKey="id"
-                data={{
-                    labels: keys,
-                    datasets: [
-                        {
-                            id: 1,
-                            label: `Open`,
-                            data: getDifference(closeArr, openArr)[0],
-                        },
-                        {
-                            id: 2,
-                            label: `close`,
-                            data: getDifference(closeArr, openArr)[1],
-                        },
-                    ],
-                }}
-            />
+        <div className="box">
+            thhis si a test
+            <LineGraphStyled>
+                <h2>Open&Close vs Time</h2> {/**line graph */}
+                <Line
+                    datasetIdKey="id"
+                    data={{
+                        labels: keys,
+                        datasets: [
+                            {
+                                id: 1,
+                                label: `open`,
+                                data: openArr,
+                            },
+                            {
+                                id: 2,
+                                label: "close",
+                                data: closeArr,
+                            },
+                            {
+                                id: 3,
+                                label: "mean",
+                                data: getMean(openArr),
+                            },
+                            {
+                                id: 4,
+                                label: "lower",
+                                data: outlier[0]
+                            },
+                            {
+                                id: 5,
+                                label: "upper",
+                                data: outlier[1]
+                            },
+                        ],
+                    }}
+                />
+                <br></br><h2>Close-Open vs Time</h2>
+                <Bar
+                    datasetIdKey="id"
+                    data={{
+                        labels: keys,
+                        datasets: [
+                            {
+                                id: 1,
+                                label: `Open`,
+                                data: getDifference(closeArr, openArr)[0],
+                            },
+                            {
+                                id: 2,
+                                label: `close`,
+                                data: getDifference(closeArr, openArr)[1],
+                            },
+                        ],
+                    }}
+                />
 
-        </LineGraphStyled>
+            </LineGraphStyled>
+
+
+        </div>
     );
 };
 
@@ -160,4 +165,14 @@ LineGraph.propTypes = {
 
 const LineGraphStyled = styled.div`
     background-color: white;
+
+    color: #800000;
+
+
+    width: 95%;
+
+
+    margin-left: auto;
+    margin-right: auto;
+
 `;

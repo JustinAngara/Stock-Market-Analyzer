@@ -15,14 +15,11 @@ const PredictionAlgorithm = () => {
                 Recommended Stock: {getRecStock(data)}  <br></br>
             </div>
 
-            Most Stable (low SD): {lowestVar(data)}<br></br>
-            [{grabStocks(data, 0).toString()}]<br></br>
+            <strong>Most Stable</strong> (low SD): {lowestVar(data)}<br></br>
 
-            n-stocks: {data.length} <br></br>
+            <strong>List of stocks</strong>: [{grabStocks(data, 0).toString()}]<br></br>
 
-            <div className = "displayStocks">
-                now in display stocks
-            </div>
+            <strong>n-stocks</strong>: {data.length} <br></br>
         </div>
     </PredictionAlgorithmStyled>;
 }

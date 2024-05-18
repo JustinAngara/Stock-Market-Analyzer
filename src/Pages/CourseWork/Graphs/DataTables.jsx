@@ -3,9 +3,9 @@ import { AgGridReact } from "ag-grid-react"; // AG Grid Component
 import PredictionAlgorithm from "./PredictionAlgorithm";
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
-
+let gData; // global data
 let DataTables = ({data}) => {
-
+    gData = data;
     return <div>
         	<table>
                 <thead>
@@ -15,6 +15,7 @@ let DataTables = ({data}) => {
                         <th>Mean Open</th>
                         <th>Mean Close</th>
                         <th>1.5 IQR</th>
+                        <th>Integral Approx.</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,7 @@ let DataTables = ({data}) => {
                         <td>{getMean(data, true)}</td>
                         <td>{getMean(data, false)}</td>
                         <td>{getIQR(data)}</td>
+                        <td>{getIntegralApprox(data)}</td>
 
                     </tr>
 
@@ -71,6 +73,22 @@ let getIQR = (d) =>{
 
 }
 
+// trapezoidial approximation of the mean of graph from each end point to mean
+let getIntegralApprox = (d) =>{
+    console.log('in integral approx');
+    console.log(gData);
+    let z = 0;// count
+
+    let mu = getMean(gData,false);// gets closed time interval
+    for(let i = 0; i<50-1;i++){
+        z += (Number(d[i]["4. close"]) + Number(d[i+1]["4. close"]) - mu) * (.5*5);
+    }
+    return z;
+}
+
 let styles = `
+    display: flex;
+    justify-content: center;
+    align-content: center;
 `;
 export default DataTables;
