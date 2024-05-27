@@ -87,30 +87,39 @@ let calculateStockValue = (z, i) =>{
     let numOfOutliers = getNumOfOutliers(z,i,mu);
     console.log('this is pearsons coefficient');
     console.log(pearson);
+
+    let mult = .75;
     if(sd>=globalSDArr[globalSDArr.length*.25] && sd<=globalSDArr[globalSDArr.length*.75]){
         // possibly return *.1.25
-    } else {
-        // return by *.75
+        mult = 1.25;
     }
-
+    mult*=(.1*numOfOutliers);
+    mult*=(.005*pearson);
+    return mult;
 }
 
 // d[i], raw, index, mean
 let getNumOfOutliers = (stock,z,mu) =>{
     stock = stock['Time Series (5min)']
     let values =  Object.values(stock);
-    values.map((e)=>{
-        return e['1. open']
+    values = values.map((e)=>{
+        return 1*e['1. open']
     })
-    console.log('values mapped');
-    console.log(values);
-    let iqr = (1*values[values.length*.75]['1. open']) - (1*values[values.length*.25]['4. close'])
+    values = values.sort();
+
+    let iqr = (1*values[74]) - (1*values[24])
     iqr *=1.5;
     console.log('numofoutliersiqr');
     console.log(iqr);
-    for(let i = 0; i<values.length;i++){
+    let lowerbound = 1*values[24]-iqr;
 
+    for(let i = 0; i<values.length;i++){
+        if(values[i]>lowerbound){
+            console.log('lowerbound counted'+i+1);
+            return i+1;// essentially since its sorted, it looks for the max values after values[i]
+        }
     }
+    return 0;
 }
 
 // stock is d[i], z:index
