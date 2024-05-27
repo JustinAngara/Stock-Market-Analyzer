@@ -31,19 +31,13 @@ let getRecStock = (d) =>{
     let t = [];
     for(let i =0; i<d.length;i++){
         console.log('now in getRecStock');
-        t.push(calculateStockValue(d[i], i))
+        t.push(calculateStockValue(d[i], i)); // this method returns an eval
     }
 }
 
 
 // imposed Algorithm
 
-/**
- * # of lower bound outliers, val: .4
- * if the standard deviation is within the .25 - .75 of listed stocks, val: .2
- * pearson skewness gets exponentially greater: .1
- * news article parser to determine positive or negative based on eVal, val: .3
- * */
 
 let populateSDArray = (d) =>{
     console.log('in populate sd arrayy');
@@ -58,26 +52,52 @@ let populateSDArray = (d) =>{
     console.log(t);
     return t;
 }
+
+
+
+/**
+ * # of lower bound outliers, val: .4
+ * if the standard deviation is within the .25 - .75 of listed stocks, val: .2
+ * pearson skewness gets exponentially greater: .1
+ * news article parser to determine positive or negative based on eVal, val: .3
+ * */
 let calculateStockValue = (z, i) =>{
     // this is an array of each object that shows open, close, volume, etc
     let tsv = Object.values(z["Time Series (5min)"]);
     console.log(tsv);
     // console.log(`now in get rec stock ${GrabNews()}`);
     let sd = getSD(z);
+    let mu = 0;
     console.log('calculate stock value method');
     console.log(sd);
+
     // if sd < sd[sd.length*.75] && sd > sd[sd.length*.25]
     for(let i =0 ; i < tsv.length; i++){
-        // tsv[i] is the individual 5 minute intervals at index i
+        // tsv[i] is the individual 5 minute intervals at stock index i
         console.log('calculatestockvaluemethod ');
         console.log(tsv[i]);
 
 
 
     }
+    let pearson = grabPearsonsCoefficient(z, i, mu);
 }
 
-let grabPearsonsCoefficient = (stock) =>{
+// stock is d[i], z:index
+let grabPearsonsCoefficient = (stock, z, mu) =>{ // return stock's pearson coefficient
+    // pearsons coefficient - (3(mu-med))/sd
+    stock = stock['Time Series (5min)']
+
+    let sd = globalSDArr[z];
+    let values =  Object.values(stock);
+    let median = Math.floor(values.length/2)-1; // returns index
+    median = values[median]["1. open"] // enters the values array then median index
+
+
+    console.log('now in median element: ');
+    console.log(median);
+    console.log('before stock variable, d[i]');
+    console.log(stock);
 
 }
 
