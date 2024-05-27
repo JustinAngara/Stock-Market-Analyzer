@@ -64,6 +64,7 @@ let populateSDArray = (d) =>{
 let calculateStockValue = (z, i) =>{
     // this is an array of each object that shows open, close, volume, etc
     let tsv = Object.values(z["Time Series (5min)"]);
+    let score = 1;
     console.log(tsv);
     // console.log(`now in get rec stock ${GrabNews()}`);
     let sd = getSD(z);
@@ -76,11 +77,40 @@ let calculateStockValue = (z, i) =>{
         // tsv[i] is the individual 5 minute intervals at stock index i
         console.log('calculatestockvaluemethod ');
         console.log(tsv[i]);
+        mu += 1*(tsv[i]["1. open"]);
 
 
 
     }
+    mu/=10;
     let pearson = grabPearsonsCoefficient(z, i, mu);
+    let numOfOutliers = getNumOfOutliers(z,i,mu);
+    console.log('this is pearsons coefficient');
+    console.log(pearson);
+    if(sd>=globalSDArr[globalSDArr.length*.25] && sd<=globalSDArr[globalSDArr.length*.75]){
+        // possibly return *.1.25
+    } else {
+        // return by *.75
+    }
+
+}
+
+// d[i], raw, index, mean
+let getNumOfOutliers = (stock,z,mu) =>{
+    stock = stock['Time Series (5min)']
+    let values =  Object.values(stock);
+    values.map((e)=>{
+        return e['1. open']
+    })
+    console.log('values mapped');
+    console.log(values);
+    let iqr = (1*values[values.length*.75]['1. open']) - (1*values[values.length*.25]['4. close'])
+    iqr *=1.5;
+    console.log('numofoutliersiqr');
+    console.log(iqr);
+    for(let i = 0; i<values.length;i++){
+
+    }
 }
 
 // stock is d[i], z:index
@@ -92,12 +122,12 @@ let grabPearsonsCoefficient = (stock, z, mu) =>{ // return stock's pearson coeff
     let values =  Object.values(stock);
     let median = Math.floor(values.length/2)-1; // returns index
     median = values[median]["1. open"] // enters the values array then median index
-
-
-    console.log('now in median element: ');
-    console.log(median);
-    console.log('before stock variable, d[i]');
-    console.log(stock);
+    console.log(`
+        mu: ${mu}
+        med: ${median}
+        sd: ${sd}
+    `);
+    return (3*(mu-median))/sd;
 
 }
 
