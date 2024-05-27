@@ -33,6 +33,19 @@ let getRecStock = (d) =>{
         console.log('now in getRecStock');
         t.push(calculateStockValue(d[i], i)); // this method returns an eval
     }
+    console.log('in get rec stock look here');
+    console.log(t);
+    let max = -9999;
+    let index = 0;
+    for(let i = 0; i<t.length;i++){
+        if(max<t[i]){
+            index = i;
+            max = t[i]
+        }
+    }
+    console.log('this is d in rec, i:'+index);
+    console.log(d[index]);
+    return d[index]["Meta Data"]["2. Symbol"]
 }
 
 
