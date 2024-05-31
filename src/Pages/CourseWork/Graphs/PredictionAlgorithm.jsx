@@ -4,9 +4,10 @@ import GrabNews from "./GrabNews"
 
 let data = getTestData(true);
 let globalSDArr; // global sd array
+let globalPearsonArr;
 const PredictionAlgorithm = () => {
-    globalSDArr = populateSDArray(data)
-
+    globalSDArr = populateSDArray(data);
+    globalPearsonArr = populatePearsonArr(data);
 
     return <PredictionAlgorithmStyled>
         <h1>Predicted Best Algorithm Stock</h1>
@@ -49,8 +50,21 @@ let getRecStock = (d) =>{
 }
 
 
-// imposed Algorithm
-
+/**
+let grabPearsonsCoefficient = (stock, z, mu) =>{ // return stock's pearson coefficient
+ *
+ */
+let populatePearsonArr = (d) => {
+    console.log('in populate pearson arr');
+    console.log(d);
+    let t = [];
+    for(let i = 0; i<d.length;i++){
+        t.push(grabPearsonsCoefficient(d[i], i, getMean(d[i])));
+    }
+    console.log('in total populate pearson arr');
+    console.log(t);
+    return t;
+}
 
 let populateSDArray = (d) =>{
     console.log('in populate sd arrayy');
@@ -77,7 +91,7 @@ let populateSDArray = (d) =>{
 let calculateStockValue = (z, i) =>{
     // this is an array of each object that shows open, close, volume, etc
     let tsv = Object.values(z["Time Series (5min)"]);
-    let score = 1;
+
     console.log(tsv);
     // console.log(`now in get rec stock ${GrabNews()}`);
     let sd = getSD(z);
@@ -88,26 +102,44 @@ let calculateStockValue = (z, i) =>{
     // if sd < sd[sd.length*.75] && sd > sd[sd.length*.25]
     for(let i =0 ; i < tsv.length; i++){
         // tsv[i] is the individual 5 minute intervals at stock index i
-        console.log('calculatestockvaluemethod ');
         console.log(tsv[i]);
         mu += 1*(tsv[i]["1. open"]);
 
 
 
     }
-    mu/=10;
+    mu/=10; // calculates mean of the price
+
     let pearson = grabPearsonsCoefficient(z, i, mu);
     let numOfOutliers = getNumOfOutliers(z,i,mu);
     console.log('this is pearsons coefficient');
     console.log(pearson);
 
+
+    // temp variable for sorted global SD array for proper proportions
+    let tssd = globalSDArr.toSorted();
+
+    // temp variable for sorted global pearson array
+    let tpa = globalPearsonArr.toSorted();
     let mult = .75;
-    if(sd>=globalSDArr[globalSDArr.length*.25] && sd<=globalSDArr[globalSDArr.length*.75]){
-        // possibly return *.1.25
+
+    // checks within the sd of being within the middle 50%
+    if(sd>=tssd[tssd.length*.25] && sd<=tssd[tssd.length*.75]){
+        // nice multipler
         mult = 1.25;
     }
-    mult*=(.1*numOfOutliers);
-    mult*=(.005*pearson);
+
+    // checks if the pearson coefficient is within the 75th percentile
+    if(pearson>=tpa[tpa.length*.75]){
+        mult+=.5
+    }
+
+    mult += (.1*numOfOutliers)
+
+    console.log('inside the global pearson arr');
+    console.log(globalPearsonArr);
+
+    // next check if the pearson coefficient is within
     return mult;
 }
 
@@ -135,10 +167,11 @@ let getNumOfOutliers = (stock,z,mu) =>{
     return 0;
 }
 
-// stock is d[i], z:index
+// stock is d[i], z:index, mu
 let grabPearsonsCoefficient = (stock, z, mu) =>{ // return stock's pearson coefficient
     // pearsons coefficient - (3(mu-med))/sd
     stock = stock['Time Series (5min)']
+    mu = 1*mu;
 
     let sd = globalSDArr[z];
     let values =  Object.values(stock);
@@ -189,7 +222,23 @@ let invNorm = (x) =>{
 }
 
 
+let getMean = (d) =>{
+    console.log('in mean method');
 
+    d = d["Time Series (5min)"];
+    d = Object.values(d);
+    let z = 0;
+    for(let i = 0; i<d.length;i++){
+        z+=(1*d[i]['1. open'])
+
+    }
+    console.log('get mean method');
+    console.log(z);
+    // const n = open.length;
+    // let open = d.map((e) => Number(e["1. open"]));
+    // return open.reduce((a, b) => a + b) / n;
+    return z/d.length;
+}
 let getSD = (d) => {
     console.log('getSD method');
 
