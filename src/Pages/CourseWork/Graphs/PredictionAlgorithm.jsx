@@ -123,7 +123,7 @@ let calculateStockValue = (z, i) =>{
     let tssd = globalSDArr.sort();
 
     // temp variable for sorted global pearson array
-    let tpa = globalPearsonArr.toSorted();
+    let tpa = globalPearsonArr.sort();
     let mult = .75;
 
     // checks within the sd of being within the middle 50%
