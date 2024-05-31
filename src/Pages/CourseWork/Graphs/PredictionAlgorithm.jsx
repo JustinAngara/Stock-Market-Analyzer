@@ -39,12 +39,15 @@ let getRecStock = (d) =>{
     let max = -9999;
     let index = 0;
     for(let i = 0; i<t.length;i++){
+
         if(max<t[i]){
             index = i;
             max = t[i]
         }
     }
+
     console.log('this is d in rec, i:'+index);
+    console.log();
     console.log(d[index]);
     return d[index]["Meta Data"]["2. Symbol"]
 }
@@ -117,7 +120,7 @@ let calculateStockValue = (z, i) =>{
 
 
     // temp variable for sorted global SD array for proper proportions
-    let tssd = globalSDArr.toSorted();
+    let tssd = globalSDArr.sort();
 
     // temp variable for sorted global pearson array
     let tpa = globalPearsonArr.toSorted();
