@@ -24,7 +24,7 @@ const PredictionAlgorithm = () => {
                 {/* <strong>
                     example fricking stuff: <GrabNews />
                 </strong> */}
-                Change: <GrabNews />
+                Changes: <GrabNews />
             </div>
         </PredictionAlgorithmStyled>
     );
