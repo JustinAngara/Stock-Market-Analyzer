@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://JustinAngara.github.io/uclax-web1-justin-angara",
+  "homepage": "https://JustinAngara.github.io/Stock-Market-Analyzer",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

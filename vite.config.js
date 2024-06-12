@@ -14,6 +14,6 @@ export default defineConfig({
     build: {
         outDir: "./build",
     },
-    base: "/uclax-web1-justin-angara/",
-    
+    base: "/Stock-Market-Analyzer/",
+
 });
