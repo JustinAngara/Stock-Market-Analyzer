@@ -1,5 +1,8 @@
 // news api a57bbac925b34dfe9fab71e17d542065
 let API_KEY = "a57bbac925b34dfe9fab71e17d542065";
+
+// sentiment api key
+let SENTIMENT_API_KEY = "";
 let GrabNews = (stringStock) => {
     getData("tesla");
     return <div>hello</div>;
