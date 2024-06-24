@@ -95,15 +95,10 @@ let parseApi = (data) => {
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                     Select Stock
                 </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                    <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-                    <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-                    <Dropdown.Item eventKey="3">Something else</Dropdown.Item>
-                </Dropdown.Menu>
+                {generateArrList()}
             </Dropdown>
 
-            <DataTables data= {timeSeriesArrValues}/>
+            <DataTables data={timeSeriesArrValues} />
             {/* end of drop down */}
 
             <h2>Symbol: {symb}</h2>
@@ -112,6 +107,23 @@ let parseApi = (data) => {
         </div>
     );
 };
+
+let generateArrList = () => {
+    console.log("generate arr key lists");
+    const metaData = getTestData(true); // Assuming getTestData returns the data
+    const symbolList = metaData.map((e) => e["Meta Data"]["2. Symbol"]);
+    console.log('this is x');
+    console.log(symbolList); // Use symbolList for clarity
+
+    return (
+      <Dropdown.Menu>
+        {symbolList.map((symbol, i) => (
+          <Dropdown.Item key={i}>{symbol}</Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    );
+};
+
 export default Grid;
 
 const GridStyled = styled.div`
